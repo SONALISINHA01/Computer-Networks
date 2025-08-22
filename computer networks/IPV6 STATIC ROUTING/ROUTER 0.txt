@@ -1,0 +1,95 @@
+
+Router>enable
+Router#show running-config
+Building configuration...
+
+Current configuration : 864 bytes
+!
+version 12.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2002::A:3/64
+ ipv6 rip cisco enable 
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2005::A:1/64
+ ipv6 rip cisco enable 
+!
+interface Ethernet0/1/0
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2006::A:1/64
+ ipv6 rip cisco enable 
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ipv6 router rip cisco
+!
+ip classless
+!
+ip flow-export version 9
+!
+ipv6 route 2001::/64 2005::A:2
+ipv6 route 2003::/64 2006::A:2
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
